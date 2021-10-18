@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.login">
+	<select id="getLogin" resultType="loginDto" parameterType="Map" >
+      SELECT ID, NAME, ADDRESS, EMAIL, PHONE, ENABLED, ROLE 
+      FROM USER_BOARD WHERE ID=#{id} AND PASSWORD=#{password} AND ENABLED='Y'
+   </select>
+   
+   <insert id="insertUser" parameterType="LoginDto">
+   		INSERT INTO USER_BOARD
+   		VALUES (#{id},#{password},#{name},#{address},#{phone},#{email},'Y','USER')
+   </insert>
+   
+   <select id="getAllUserSelect" resultType="loginDto" parameterType="String">
+   		SELECT ID,PASSWORD,NAME,ADDRESS,PHONE,EMAIL,ENABLED,ROLE
+   		FROM USER_BOARD ORDER BY NAME
+   </select>
+   
+   <select id=""></select>
+</mapper>
